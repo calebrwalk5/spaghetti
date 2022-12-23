@@ -1,0 +1,67 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document - Home</title>
+        <meta property="og:title" content="Document - Home" />
+        <link rel="icon" href="/assets/logo.png">
+        <meta property="og:image" content="/assets/logo.png">
+        <meta name="theme-color" content="#5865F2">
+        <meta name="description" content="Some page description..." />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Some page description..." />
+        <style type="text/css">
+            body {
+                background-color: #ff0000;
+                color: #000000;
+                text-align: start !important;
+            }
+            .allthatshit {
+                height: 22em;
+                max-height: 22em;
+                overflow-y: auto;
+                background-color: white;
+                color: black;
+                padding: 6px;
+            }
+            h4 {
+                font-weight: 700;
+            }
+            .form-control {
+                color: white !important;
+                margin-bottom: 0.4em;
+            }
+                
+        </style>
+    </head>
+    <body>
+        <%- include('_header') %>
+        <div class="container p-4">
+            <h1>🍝 Spaghetti Chat Room</h1>
+            <hr>
+            <div class="allthatshit" id="cringe">
+                <% messages.forEach(function(message) { %>
+                    <div class="message">
+                        <h4><%= message.username %></h4>
+                        <p><%= message.message %></p>
+                        <hr>
+                    </div>
+                <% }); %>
+            </div>
+            <hr>
+            <form action="/backend/create/message" method="post">
+                <input type="text" name="username" class="form-control bg-dark" placeholder="Your username..." value="<%= username %>" required>
+                <textarea name="message" rows="4" class="form-control bg-dark" placeholder="Message content..." required></textarea>
+                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+            </form>
+            <a href="https://github.com/calebrwalk5/spaghetti" class="btn btn-light btn-lg"><i class="fa-brands fa-github-alt"></i> GitHub Repo</a>
+        </div>
+        <%- include('_footer') %>
+        <script>
+            addEventListener("load", (event) => {
+                var elem = document.getElementById('cringe');
+                elem.scrollTop = elem.scrollHeight;
+            });
+        </script>
+    </body>
+</html>
