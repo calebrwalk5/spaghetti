@@ -1,2 +1,2 @@
 # spaghetti
-spaget
+https://spaghetti.boats/
